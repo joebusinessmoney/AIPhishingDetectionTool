@@ -1,0 +1,10 @@
+{
+    "name": "AI Phishing Detection Tool",
+    "description": "AI Phishing Detection Tool Chrome Extension",
+    "version": "1.0",
+    "manifest_version": 3,
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": "tempicon.png"
+    }
+}
