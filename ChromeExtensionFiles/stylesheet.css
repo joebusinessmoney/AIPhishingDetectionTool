@@ -3,6 +3,12 @@ h1 {
     color: gray;
 }
 
+body {
+    font-family: monospace;
+    background-color: blue;
+    color: red;
+}
+
 /* button styling */
 
 input[type="submit"] {
