@@ -3,6 +3,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, classification_report
 import pandas as pd
+import joblib
 
 # read csv file
 data = pd.read_csv("Phishing_Email.csv")
@@ -26,6 +27,14 @@ X_train, X_test, y_train, y_test = train_test_split(result, labels, test_size=0.
 # train data using a logistic regression model
 model = LogisticRegression()
 model.fit(X_train, y_train)
+
+# save trained model
+joblib.dump(model, "logisticRegressionModel.pkl")
+
+# save tfidf vectorizer
+joblib.dump(tfidf, "tfidfVectorizer.pkl")
+
+print("saved model")
 
 # make predictions
 

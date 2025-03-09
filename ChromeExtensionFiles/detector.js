@@ -4,6 +4,16 @@ document.getElementById("readText").addEventListener("click", function () {
             return; // stop if no tab is found
         }
 
+        var activeTab = tabs[0];
+        var tabUrl = activeTab.url;
+
+        // checks if the currently active tab is a gmail email, if not it will cancel the script injection
+        if (!tabUrl.startsWith("https://mail.google.com/mail/u/0/#inbox/")) {
+            document.getElementById("output").innerText = "go into gmail email for this thing to work pal"
+            console.log("NO GMAIL DETECTED!!!!!!!!!!!!!!!!!!")
+            return;
+        }
+
         // injects script into active tab
         chrome.scripting.executeScript(
             {
@@ -29,3 +39,17 @@ function readText() {
     return document.body.innerText.trim();
 }
 
+
+async function checkPhishing(emailText) {
+    const response = await fetch("http://127.0.0.1:5000/predict", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email_text: emailText}),
+    });
+
+    const data = await response.json();
+    alert(`phishing score: ${data.phishing_score}%`);
+}
+
+let emailText = readText;
+checkPhishing(emailText);
