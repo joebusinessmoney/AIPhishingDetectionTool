@@ -2,18 +2,17 @@ print("started")
 import numpy as np
 import pandas as pd
 import random
+import gc
 print("first import")
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import classification_report
-
 print("sklearn")
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Embedding, LSTM, Dense, Dropout
 from tensorflow.keras.utils import to_categorical
-import gc
 print("keras")
 
 # read dataset from csv file
