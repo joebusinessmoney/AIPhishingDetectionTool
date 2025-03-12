@@ -14,11 +14,13 @@ modelPath = os.path.join(os.path.dirname(__file__), "logisticRegressionModel.pkl
 model = joblib.load(modelPath)
 vectorizerPath = os.path.join(os.path.dirname(__file__), "tfidfVectorizer.pkl")
 vectorizer = joblib.load(vectorizerPath)
-
+print("vectorizer vocab: ", list(vectorizer.vocabulary_.keys())[:10])
+probabilityIndex = list(model.classes_).index("Safe Email")
+print(probabilityIndex)
 
 def cleanText(text):
     text = text.lower()
-    text = re.sub(r"\W+", " ", text) # removes special characters
+    text = re.sub(r"\s+", " ", text).strip()    # remove extra spaces
     return text
 
 #@app.route("/")
@@ -30,14 +32,17 @@ def predict():
 
     print("POST received at /predict zone whats going on witcha")
     data = request.json
-    print("the eagle has landed")
+    print("the eagle has landed: ", data)
     emailText = data.get("email_text", "")
-
+    print(emailText)
+    
     cleanedText = cleanText(emailText)
     features = vectorizer.transform([cleanedText])
 
     prediction = model.predict(features)[0]
-    probability = model.predict_proba(features)[0][1] * 100 
+    probability = model.predict_proba(features)[0][1]
+
+    
 
     return jsonify({"phishing_score": round(probability, 2), "prediction": prediction})
 

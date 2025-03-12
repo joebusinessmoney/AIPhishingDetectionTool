@@ -36,7 +36,8 @@ document.getElementById("readText").addEventListener("click", function () {
 
 // this function will be injected into the current website and read its text
 function readText() {
-    return document.body.innerText.trim();
+    emailElement = document.querySelector('.a3s') // targets only the email text part of the email !!! CHANGE IF GOOGLE CHANGES EMAIL FORMATTING
+    return emailElement.innerText.trim();
 }
 
 
