@@ -27,8 +27,22 @@ document.getElementById("readText").addEventListener("click", function () {
                     return;
                 }
 
+                var emailText = "";
+                if (results && results.length > 0 && results[0].result) {
+                    emailText = results[0].result;
+                }
+
+                if (!emailText) {
+                    console.log("no email glorbed");
+                    document.getElementById("output").innerText = "no glorbs"
+                    return;
+                }
+
                 // displays extracted text in currently empty div
-                document.getElementById("output").innerText = results[0].result || "error: no text found";
+                console.log("extracted email: ", emailText)
+                document.getElementById("output").innerText = emailText //results[0].result || "error: no text found";
+
+                checkPhishing(emailText)
             }
         );
     });
@@ -41,16 +55,38 @@ function readText() {
 }
 
 
-async function checkPhishing(emailText) {
-    const response = await fetch("http://127.0.0.1:5000/predict", {
+function checkPhishing(emailText) {
+
+    fetch("http://127.0.0.1:5000/predict", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email_text: emailText}),
-    });
+        body: JSON.stringify({ email_text: emailText})
+    })
+    .then(function (response) {
+        return response.json
+    })
+    .then(function (data) {
+        console.log("server response ", data);
+        if (!data || typeof data.phishing_score === "undefined" || typeof data.prediction === "undefined") {
+            alert("server diud a poopy")
+            return;
+        }
 
-    const data = await response.json();
-    alert(`phishing score: ${data.phishing_score}%`);
+        alert("phishing score: " + data.phishing_score + "%\nclassifcation: " + data.prediction);
+
+    })
+    .catch(function (error) {
+        console.error("eror happen: ", error);
+    });
+    // const response = await fetch("http://127.0.0.1:5000/predict", {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify({ email_text: emailText}),
+    // });
+
+    // const data = await response.json();
+    // alert(`phishing score: ${data.phishing_score}%`);
 }
 
-let emailText = readText;
-checkPhishing(emailText);
+// let emailText = readText;
+// checkPhishing(emailText);
