@@ -10,9 +10,9 @@ app = Flask(__name__)
 
 # load logistic regression model and text vectorizer
 
-modelPath = os.path.join(os.path.dirname(__file__), "logisticRegressionModel.pkl")
+modelPath = os.path.join(os.path.dirname(__file__), "logisticRegressionModelLING.pkl")
 model = joblib.load(modelPath)
-vectorizerPath = os.path.join(os.path.dirname(__file__), "tfidfVectorizer.pkl")
+vectorizerPath = os.path.join(os.path.dirname(__file__), "tfidfVectorizerLING.pkl")
 vectorizer = joblib.load(vectorizerPath)
 print("vectorizer vocab: ", list(vectorizer.vocabulary_.keys())[:10])
 probabilityIndex = list(model.classes_).index("Safe Email")
@@ -47,7 +47,7 @@ def predict():
 
     
 
-    return jsonify({"phishing_score": round(probability, 2), "prediction": prediction})
+    return jsonify({"phishing_score": round(probability * 100, 2), "prediction": prediction})
 
 if __name__ == "__main__":
     app.run(debug=True)

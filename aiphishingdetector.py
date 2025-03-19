@@ -6,7 +6,8 @@ import pandas as pd
 import joblib
 
 # read csv file
-data = pd.read_csv("Phishing_Email.csv")
+#data = pd.read_csv("Phishing_Email.csv")
+data = pd.read_csv("Ling.csv")
 
 # split text and labels
 corpus = data["Email Text"].fillna("").tolist()
@@ -29,10 +30,10 @@ model = LogisticRegression()
 model.fit(X_train, y_train)
 
 # save trained model
-joblib.dump(model, "logisticRegressionModel.pkl")
+joblib.dump(model, "logisticRegressionModelLING.pkl")
 
 # save tfidf vectorizer
-joblib.dump(tfidf, "tfidfVectorizer.pkl")
+joblib.dump(tfidf, "tfidfVectorizerLING.pkl")
 
 print("saved model")
 

@@ -50,14 +50,11 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-
-
 // this function will be injected into the current website and read its text
 function readText() {
     emailElement = document.querySelector('.a3s') // targets only the email text part of the email !!! CHANGE IF GOOGLE CHANGES EMAIL FORMATTING
     return emailElement.innerText.trim();
 }
-
 
 function checkPhishing(emailText) {
 
@@ -83,15 +80,4 @@ function checkPhishing(emailText) {
     .catch(function (error) {
         console.error("eror happen: ", error);
     });
-    // const response = await fetch("http://127.0.0.1:5000/predict", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify({ email_text: emailText}),
-    // });
-
-    // const data = await response.json();
-    // alert(`phishing score: ${data.phishing_score}%`);
 }
-
-// let emailText = readText;
-// checkPhishing(emailText);
