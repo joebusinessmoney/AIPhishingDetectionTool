@@ -76,7 +76,8 @@ function checkPhishing(emailText) {
             return;
         }
 
-        alert("phishing score: " + data.phishing_score + "%\nclassifcation: " + data.prediction);
+        // alert("phishing score: " + data.phishing_score + "%\nclassifcation: " + data.prediction);
+        document.getElementById("classification").innerText = "phishing score: " + data.phishing_score + "%\nclassifcation: " + data.prediction;
 
     })
     .catch(function (error) {
