@@ -34,10 +34,13 @@ def predict():
     data = request.json
     print("the eagle has landed: ", data)
     emailText = data.get("email_text", "")
-    print(emailText)
+    print("EMAIL TEXT !!!!!!!!!!!!!! ", emailText)
     
     cleanedText = cleanText(emailText)
+
+    print("CLEANED TEXT !!!!!!!!!!!", cleanedText)
     features = vectorizer.transform([cleanedText])
+    print(" FEATURE1111111111111111", features)
 
     prediction = model.predict(features)[0]
     probability = model.predict_proba(features)[0][1]
