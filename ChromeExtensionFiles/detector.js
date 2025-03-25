@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             // checks if the currently active tab is a gmail email, if not it will cancel the script injection
             if (!tabUrl.startsWith("https://mail.google.com/mail/u/0/#inbox/")) {
-                document.getElementById("output").innerText = "go into gmail email for this thing to work pal"
+                document.getElementById("output").innerText = "This extension only works on gmail emails!"
                 console.log("NO GMAIL DETECTED!!!!!!!!!!!!!!!!!!")
                 return;
             }
@@ -34,8 +34,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
 
                     if (!emailText) {
-                        console.log("no email glorbed");
-                        document.getElementById("output").innerText = "no glorbs"
+                        console.log("error no email text");
+                        document.getElementById("output").innerText = "No email text found!"
                         return;
                     }
 
@@ -69,7 +69,7 @@ function checkPhishing(emailText) {
     .then(function (data) {
         console.log("server response ", data);
         if (!data || typeof data.phishing_score === "undefined" || typeof data.prediction === "undefined") {
-            alert("server diud a poopy")
+            alert("server returned undefined")
             return;
         }
 
@@ -78,6 +78,6 @@ function checkPhishing(emailText) {
 
     })
     .catch(function (error) {
-        console.error("eror happen: ", error);
+        console.error("eror happened: ", error);
     });
 }
