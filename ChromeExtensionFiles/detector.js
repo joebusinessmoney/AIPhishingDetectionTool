@@ -42,6 +42,10 @@ document.addEventListener("DOMContentLoaded", function() {
                     // displays extracted text in currently empty div
                     console.log("extracted email: ", emailText)
                     document.getElementById("output").innerText = emailText //results[0].result || "error: no text found";
+                    if (emailText.includes("http://")) { // alert user of unsecure website links commonly found in phishing emails
+                        document.getElementById("advice").innerText = "This email contains unsecure website links, please proceed with caution and avoid interacting with these links. "
+                    }
+                    
 
                     checkPhishing(emailText)
                 }
@@ -75,7 +79,23 @@ function checkPhishing(emailText) {
 
         // alert("phishing score: " + data.phishing_score + "%\nclassifcation: " + data.prediction);
         document.getElementById("classification").innerText = "phishing score: " + data.phishing_score + "%\nclassifcation: " + data.prediction;
+        
+        let adviceText = document.getElementById("advice").innerText;
 
+        if (data.phishing_score <= 100 && data.phishing_score > 80) {
+            adviceText += " This email is safe.";
+        } else if (data.phishing_score <= 80 && data.phishing_score > 60) {
+            adviceText += " This email is likely safe.";
+        } else if (data.phishing_score <= 60 && data.phishing_score > 40) {
+            adviceText += " This email is possibly fraudulent.";
+        } else if (data.phishing_score <= 40 && data.phishing_score > 20) {
+            adviceText += " This email is likely fraudulent.";
+        } else if (data.phishing_score <= 20 && data.phishing_score >= 0) {
+            adviceText += " This email is highly likely fraudulent.";
+        } else {
+            adviceText += "Error with phishing score.";
+        }
+        document.getElementById("advice").innerText = adviceText;
     })
     .catch(function (error) {
         console.error("eror happened: ", error);
