@@ -5,6 +5,10 @@
     "manifest_version": 3,
     "host_permissions": ["<all_urls>"],
     "permissions": ["scripting", "activeTab", "storage"],
+    "options_ui": {
+        "page": "options.html", 
+        "open_in_tab": false
+    },
     "action": {
         "default_popup": "popup.html",
         "default_icon": "fish.png"
