@@ -1,14 +1,20 @@
-document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("save").addEventListener("click", function () {
-        document.getElementById("status").innerText = "Settings saved!";
-        var darkMode = document.getElementById("darkmode");
+document.addEventListener("DOMContentLoaded", function () {
+    const saveButton = document.getElementById("save");
+    const lightModeToggle = document.getElementById("lightmode");
+    const status = document.getElementById("status");
 
-        if (darkMode.checked == true) {
-            document.getElementById("status").innerText += "dark mode activagte";
-        } else {
-            document.getElementById("status").innerText += "let there be light";
-        }
-        
+
+    const isLight = localStorage.getItem("lightmode") === "true";
+    document.body.classList.toggle("light", isLight);
+    lightModeToggle.checked = isLight;
+
+    saveButton.addEventListener("click", function () {
+        const lightOn = lightModeToggle.checked;
+        document.body.classList.toggle("light", lightOn);
+        localStorage.setItem("lightmode", lightOn);
+
+        status.innerText = "saved settings";
     });
 });
+
 

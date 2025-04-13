@@ -15,6 +15,12 @@ body {
     color: lime;
 }
 
+body.light {
+  font-family: monospace;
+  background-color: #fff;
+  color: cadetblue;
+}
+
 /* button styling */
 
 button {

@@ -11,7 +11,7 @@
     },
     "action": {
         "default_popup": "popup.html",
-        "default_icon": "fish.png"
+        "default_icon": "tempicon.png"
     },
     "content_scripts": [
         {
