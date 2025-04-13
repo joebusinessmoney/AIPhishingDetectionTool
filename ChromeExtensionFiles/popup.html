@@ -11,24 +11,36 @@
                 </div>
                 
                 <div class="dropdown-options" id="dropdownSwitch">
-                    <a  href="options.html">Settings</a>
+                    <a  href="options.html">Options</a>
                     <a href="#">How to use</a>
-                    <a href="#">Placeholder</a>
+                    <a href="#">Report Bug</a>
                 </div>
             </div>
         </div>
         
         <link href="stylesheet.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <br>
-        <button id="readText">Check</button>
+        
         <script src="detector.js" defer></script>
-        <script src="script.js"></script>
-        <p><strong>Classification of email:</strong></p>
-        <div id="classification"></div>
-        <p><strong>Recommended Action:</strong></p>
-        <div id="advice"></div>
-        <p><strong>Email content:</strong></p>
-        <div id="output"></div>
+        <script src="script.js" defer></script>
+
+        <button id="readText">Check</button>
+        <br>
+
+        <button class="accordion">Email classification</button>
+        <div class="panel">
+            <p id="classification"></p>
+        </div>
+
+        <button class="accordion">Recommended action</button>
+        <div class="panel">
+            <p id="advice"></p>
+        </div>
+
+        <button class="accordion">Email content</button>
+        <div class="panel">
+            <p id="output"></p>
+        </div>
+
     </body>
 </html>
