@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <html>
     <body>
         <div class="navbar">
@@ -24,24 +25,25 @@
         <script src="detector.js" defer></script>
         <script src="script.js" defer></script>
         <script src="settings.js" defer></script>
+        <div class="main">
+            <button id="readText" class="circle">Check</button>
 
-        <button id="readText">Check</button>
-        <br>
+            <button class="accordion">Email classification</button>
+            <div class="panel">
+                <p id="classification"></p>
+            </div>
 
-        <button class="accordion">Email classification</button>
-        <div class="panel">
-            <p id="classification"></p>
+            <button class="accordion">Recommended action</button>
+            <div class="panel">
+                <p id="advice"></p>
+            </div>
+
+            <button class="accordion">Email content</button>
+            <div class="panel">
+                <p id="output"></p>
+            </div>
         </div>
-
-        <button class="accordion">Recommended action</button>
-        <div class="panel">
-            <p id="advice"></p>
-        </div>
-
-        <button class="accordion">Email content</button>
-        <div class="panel">
-            <p id="output"></p>
-        </div>
+        
 
     </body>
 </html>
