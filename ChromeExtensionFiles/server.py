@@ -27,6 +27,13 @@ def cleanText(text):
 #def home():
 #    return "thingies ruynning, send POST requedstion to /predict"
 
+@app.route("/feedback", methods=["POST"])
+def feedback():
+    feedback=request.json
+    print("A user has submitted the following feedback: ", feedback)
+
+    return jsonify({"status": "success", "message": "feedback received"}), 200 # 200 = okay everything worked
+
 @app.route("/predict", methods=["POST"])
 def predict():
 

@@ -21,6 +21,33 @@ document.addEventListener("DOMContentLoaded", () =>  {
     });
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    const feedbackButton = document.getElementById("feedbackSubmit");
+    const feedbackText = document.getElementById("feedback");
+
+    feedbackButton.addEventListener("click", function () {
+        console.log("A user has submitted the following feedback: " + feedbackText.value);
+        sendFeedback(feedbackText.value)
+        feedbackText.value = "";
+    });
+
+});
+
+function sendFeedback(feedbackText) {
+
+    fetch("http://127.0.0.1:5000/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ feedback_text: feedbackText})
+    })
+    .then(function (response) {
+        return response.json();
+    })
+    .catch(function (error) {
+        console.error("eror happened: ", error);
+    });
+}
+
 var accordion = document.getElementsByClassName("accordion");
 for (var i = 0; i < accordion.length; i++) {
     accordion[i].addEventListener("click", function() {
