@@ -236,6 +236,7 @@ a:active {
   max-height: 0;
   overflow: hidden;
   transition: all .6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  font-size: 14px;
 }
 
 /* bug report page */
@@ -356,94 +357,6 @@ body.light h1 {
   color: cadetblue;
 }
 
-/* body.light a {
-  color: #000;
-}
-
-body.light a:hover {
-  background-color: cadetblue;
-}
-
-body.light a:active {
-  background-color: darkcyan;
-}
-
-body.light .navbar {
-  background-color: #ccc;
-}
-
-body.light .navbar p {
-  color: cadetblue;
-}
-
-body.light .navbar a {
-  color: cadetblue;
-}
-
-body.light .dropdown-options {
-  background-color: #fff;
-  color: #000;
-}
-
-body.light .dropdown-options a {
-  color: #000;
-}
-
-body.light .dropdown-options a:hover {
-  background-color: #eee;
-}
-
-body.light .container {
-  background-color: #ccc;
-}
-
-body.light .bar1,
-body.light .bar2,
-body.light .bar3 {
-  background-color: #000;
-}
-
-body.light button.normal {
-  background-color: #ccc;
-  color: cadetblue;
-  border-color: cadetblue;
-}
-
-body.light button.normal:hover {
-  box-shadow: 0px 0px 10px 0px cadetblue;
-  background-color: cadetblue;
-  color: white;
-}
-
-body.light button.normal:active {
-  box-shadow: 0px 0px 0px 0px cadetblue;
-}
-
-body.light .circle {
-  background-color: #ccc;
-  color: cadetblue;
-  border-color: cadetblue;
-}
-
-body.light .circle:hover {
-  background-color: cadetblue;
-  color: white;
-  box-shadow: 0 0 10px cadetblue;
-} */
-
-/* body.light .accordion {
-  background-color: #ccc;
-  color: cadetblue;
-}
-
-body.light .accordion:hover {
-  background-color: lightblue;
-}
-
-body.light .accordion:after {
-  color: cadetblue;
-} */
-
 body.light .panel {
   background-color: #fff;
   color: #000;
@@ -471,5 +384,5 @@ body.light div.help h2 {
 
 body.light div.help p {
   background-color: #eee;
-  color: cadetblue;
+  color: #000;
 }
