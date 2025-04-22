@@ -17,7 +17,7 @@ body {
 
 body.light {
   font-family: monospace;
-  background-color: #fff;
+  background-color: #ccc;
   color: cadetblue;
 }
 
@@ -60,40 +60,29 @@ button.normal {
 
   .circle {
     background-color: #000;
-    border: 2px solid #4CAF50;
+    border: 5px solid #4CAF50;
     color: white;
     font-family: monospace;
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     font-size: 16px;
     cursor: pointer;
     margin-bottom: 24px;
-    transition: all 0.3s ease;
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   }
   
   .circle:hover {
     background-color: #4CAF50;
     color: #000;
     box-shadow: 0 0 10px #4CAF50;
+    transform: scale(1.02, 1.02);
   }
 
   .circle:active{
     box-shadow: 0px 0px 0px 0px #4CAF50;
     transform: scale(0.95, 0.95);
   }
-
-.cog{
-  color: #fff;
-  font-size: 16px;
-  transition: all .6s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-.cog:hover{
-  transform: rotateX('360');
-  transform: scale(1.1, 1.1);
-  color: red; 
-}
 
 a {
   color: #fff;
@@ -102,11 +91,11 @@ a {
 }
 
 a:hover {
-  color:#4CAF50;
+  background-color:#4CAF50;
 }
 
 a:active {
-  color: darkgreen;
+  background-color: darkgreen;
 }
 
 /* nav bar */
@@ -115,7 +104,7 @@ a:active {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: red;
+  background-color: #4CAF50;
   padding: 10px 16px;
   position: relative;
 }
@@ -129,7 +118,6 @@ a:active {
 
 .navbar a {
   float: right;
-  color:#4D4D4D;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -138,8 +126,8 @@ a:active {
 }
 
 .navbar a:hover, .dropdown:hover .dropbutton, .dropbutton:focus{
-  background-color: #4CAF50;
-  color: #000;
+  background-color: darkgreen;
+  color: #fff;
 }
 
 .navbar a:active{
@@ -152,17 +140,6 @@ a:active {
 .dropdown {
   position: relative;
 }
-
-/* .dropdown .dropbutton {
-  font-size: 16px;
-  border: none;
-  outline: none;
-  color: #fff;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-} */
 
 .dropdown-options {
   display: none;
@@ -200,13 +177,13 @@ a:active {
   width: 40px;
   height: 40px;
   background-color: #000;
-  border-radius: 50%;
+  /* border-radius: 50%; */
   cursor: pointer;
 }
 
 .bar1, .bar2, .bar3 {
   width: 35px;
-  height: 5px;
+  height: 15px;
   background-color: #fff;
   margin: 6px 0;
   transition: 0.4s;
@@ -225,7 +202,7 @@ a:active {
 /* accordion */
 
 .accordion {
-  background-color: red;
+  background-color: #4CAF50;
   color: #fff;
   cursor: pointer;
   padding: 18px;
@@ -237,13 +214,13 @@ a:active {
   transition: all .6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.active, .accordion:hover {
-  background-color: darkred;
+.accordion:hover {
+  background-color: darkgreen;
 }
 
 .accordion:after {
   content: "\002B";
-  color: cyan;
+  color: #fff;
   float: right;
   margin-left: 5px;
 }
@@ -255,7 +232,7 @@ a:active {
 .panel {
   padding: 0 18px;
   padding: 0 18px;
-  background-color: white;
+  background-color: #4D4D4D;
   max-height: 0;
   overflow: hidden;
   transition: all .6s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -276,12 +253,12 @@ a:active {
   padding: 12px;
   font-family: monospace;
   font-size: 14px;
-  border: 2px solid #4CAF50;
+  border: 2px solid #fff;
   border-radius: 8px;
   resize: vertical;
   background-color: #404040;
   color: #fff;
-  box-shadow: 0 0 5px #4CAF50;
+  box-shadow: 0 0 5px #4D4D4D;
 }
 
 /* switch */
@@ -349,6 +326,150 @@ input:checked + .slider:before {
 .switchLabel {
   font-family: monospace;
   color: lime;
+  font-size: 18px;
+}
+
+.statusMessage {
+  text-align: center;
+  padding: 10px;
+  font-size: 18px;
+}
+
+/* help page styling */
+
+div.help h2 {
+  background-color: #4D4D4D;
+  border-left: 5px solid #4CAF50;
+  color: #fff;
+}
+
+div.help p {
+  background-color: #4D4D4D;
+  color: #fff;
 }
 
 
+/* light mode styling*/
+
+body.light h1 {
+  background-color: #ccc;
+  color: cadetblue;
+}
+
+/* body.light a {
+  color: #000;
+}
+
+body.light a:hover {
+  background-color: cadetblue;
+}
+
+body.light a:active {
+  background-color: darkcyan;
+}
+
+body.light .navbar {
+  background-color: #ccc;
+}
+
+body.light .navbar p {
+  color: cadetblue;
+}
+
+body.light .navbar a {
+  color: cadetblue;
+}
+
+body.light .dropdown-options {
+  background-color: #fff;
+  color: #000;
+}
+
+body.light .dropdown-options a {
+  color: #000;
+}
+
+body.light .dropdown-options a:hover {
+  background-color: #eee;
+}
+
+body.light .container {
+  background-color: #ccc;
+}
+
+body.light .bar1,
+body.light .bar2,
+body.light .bar3 {
+  background-color: #000;
+}
+
+body.light button.normal {
+  background-color: #ccc;
+  color: cadetblue;
+  border-color: cadetblue;
+}
+
+body.light button.normal:hover {
+  box-shadow: 0px 0px 10px 0px cadetblue;
+  background-color: cadetblue;
+  color: white;
+}
+
+body.light button.normal:active {
+  box-shadow: 0px 0px 0px 0px cadetblue;
+}
+
+body.light .circle {
+  background-color: #ccc;
+  color: cadetblue;
+  border-color: cadetblue;
+}
+
+body.light .circle:hover {
+  background-color: cadetblue;
+  color: white;
+  box-shadow: 0 0 10px cadetblue;
+} */
+
+/* body.light .accordion {
+  background-color: #ccc;
+  color: cadetblue;
+}
+
+body.light .accordion:hover {
+  background-color: lightblue;
+}
+
+body.light .accordion:after {
+  color: cadetblue;
+} */
+
+body.light .panel {
+  background-color: #fff;
+  color: #000;
+}
+
+body.light .feedback textarea {
+  background-color: #fff;
+  color: #000;
+  border-color: #000;
+}
+
+body.light .switchLabel {
+  color: cadetblue;
+}
+
+body.light .statusMessage {
+  color: cadetblue;
+}
+
+body.light div.help h2 {
+  background-color: #eee;
+  color: cadetblue;
+  border-left: 5px solid cadetblue;
+}
+
+body.light div.help p {
+  background-color: #eee;
+  color: cadetblue;
+}

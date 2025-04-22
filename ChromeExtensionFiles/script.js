@@ -60,3 +60,15 @@ for (var i = 0; i < accordion.length; i++) {
         }
     });
 }
+
+function openAccordion(index) {
+    const accordions = document.getElementsByClassName("accordion");
+    const panels = document.getElementsByClassName("panel");
+
+    if (accordions[index] && panels[index]) {
+        if (!accordions[index].classList.contains("active")) {
+            accordions[index].classList.add("active");
+            panels[index].style.maxHeight = panels[index].scrollHeight + "px";
+        }
+    }
+}

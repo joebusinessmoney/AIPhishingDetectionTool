@@ -79,6 +79,11 @@ function checkPhishing(emailText) {
 
         // alert("phishing score: " + data.phishing_score + "%\nclassifcation: " + data.prediction);
         document.getElementById("classification").innerText = "phishing score: " + data.phishing_score + "%\nclassifcation: " + data.prediction;
+
+        document.getElementById("classification").innerText = 
+        "phishing score: " + data.phishing_score + "%\nclassifcation: " + data.prediction;
+        openAccordion(0);
+ 
         
         let adviceText = document.getElementById("advice").innerText;
 
