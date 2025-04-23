@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const feedbackText = document.getElementById("feedback");
 
     feedbackButton.addEventListener("click", function () {
+        document.getElementById("repstatus").innerText = "Sending..."
         console.log("A user has submitted the following feedback: " + feedbackText.value);
         sendFeedback(feedbackText.value)
         feedbackText.value = "";
@@ -43,10 +44,16 @@ function sendFeedback(feedbackText) {
         body: JSON.stringify({ feedback_text: feedbackText})
     })
     .then(function (response) {
+        if (!response.ok) {
+            throw new Error("server status: " + response.status);
+        } else {
+            document.getElementById("repstatus").innerText = "Feedback submitted!";
+        }
         return response.json();
     })
     .catch(function (error) {
         console.error("eror happened: ", error);
+        document.getElementById("repstatus").innerText = "Error: Received no response from Flask server, it may not be running";
     });
 }
 
