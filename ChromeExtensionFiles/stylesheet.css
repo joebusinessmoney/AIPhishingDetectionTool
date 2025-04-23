@@ -75,7 +75,7 @@ button.normal {
   .circle:hover {
     background-color: #4CAF50;
     color: #000;
-    box-shadow: 0 0 10px #4CAF50;
+    box-shadow: 0 0 15px #4CAF50;
     transform: scale(1.02, 1.02);
   }
 

@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             // checks if the currently active tab is a gmail email, if not it will cancel the script injection
             if (!tabUrl.startsWith("https://mail.google.com/mail/u/0/#inbox/")) {
-                document.getElementById("output").innerText = "This extension only works on gmail emails!"
+                document.getElementById("error").innerText = "Error: This extension only works on gmail emails!"
                 console.log("error: no gmail detected")
                 return;
             }
@@ -35,13 +35,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
                     if (!emailText) {
                         console.log("error: no email text");
-                        document.getElementById("output").innerText = "No email text found!"
+                        document.getElementById("error").innerText = "No email text found!"
                         return;
                     }
 
                     // displays extracted text in currently empty div
                     console.log("extracted email: ", emailText)
-                    document.getElementById("output").innerText = emailText //results[0].result || "error: no text found";
+                    document.getElementById("output").innerText = emailText 
+                    document.getElementById("error").innerText = "Loading..." // notify user something is happening
                     if (emailText.includes("http://")) { // alert user of unsecure website links commonly found in phishing emails
                         document.getElementById("advice").innerText = "This email contains unsecure website links, please proceed with caution and avoid interacting with these links. "
                     }
@@ -68,6 +69,9 @@ function checkPhishing(emailText) {
         body: JSON.stringify({ email_text: emailText}) // json format for email content
     })
     .then(function (response) {
+        if (!response.ok) {
+            throw new Error("server status: " + response.status);
+        }
         return response.json(); // turns server response to json
     })
     .then(function (data) {
@@ -82,6 +86,7 @@ function checkPhishing(emailText) {
         document.getElementById("classification").innerText = 
         "phishing score: " + data.phishing_score + "%\nclassifcation: " + data.prediction;
         openAccordion(0);
+        document.getElementById("error").innerText = ""; // clear error message
  
         
         let adviceText = document.getElementById("advice").innerText;
@@ -105,5 +110,6 @@ function checkPhishing(emailText) {
     })
     .catch(function (error) {
         console.error("eror happened: ", error);
+        document.getElementById("error").innerText = "Error: Received no response from Flask server, it may not be running";
     });
 }
