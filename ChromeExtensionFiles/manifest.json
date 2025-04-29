@@ -10,8 +10,7 @@
         "open_in_tab": false
     },
     "action": {
-        "default_popup": "popup.html",
-        "default_icon": "tempicon.png"
+        "default_popup": "popup.html"
     },
     "content_scripts": [
         {

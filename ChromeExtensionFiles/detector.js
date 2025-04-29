@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             var activeTab = tabs[0];
             var tabUrl = activeTab.url;
+            document.getElementById("advice").innerText = "";
 
             // checks if the currently active tab is a gmail email, if not it will cancel the script injection
             if (!tabUrl.startsWith("https://mail.google.com/mail/u/0/#inbox/")) {
@@ -82,10 +83,7 @@ function checkPhishing(emailText) {
         }
 
         document.getElementById("classification").innerText = "Phishing score: " + data.phishing_score + "%\nClassification: " + data.prediction;
-
-        document.getElementById("classification").innerText = 
-        "phishing score: " + data.phishing_score + "%\nclassifcation: " + data.prediction;
-        openAccordion(0);
+        openAccordion(0); //open the email classification accordion 
         document.getElementById("error").innerText = ""; // clear error message
  
         

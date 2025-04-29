@@ -18,7 +18,7 @@ body {
 body.light {
   font-family: monospace;
   background-color: #ccc;
-  color: cadetblue;
+  color: #000;
 }
 
 .main {
@@ -369,11 +369,11 @@ body.light .feedback textarea {
 }
 
 body.light .switchLabel {
-  color: cadetblue;
+  color: #000;
 }
 
 body.light .statusMessage {
-  color: cadetblue;
+  color: #000;
 }
 
 body.light div.help h2 {
