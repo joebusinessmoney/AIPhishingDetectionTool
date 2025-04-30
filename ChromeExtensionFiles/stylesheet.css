@@ -12,7 +12,7 @@ html {
 body {
     font-family: monospace;
     background-color: #000;
-    color: lime;
+    color: #4CAF50;
 }
 
 body.light {
@@ -326,7 +326,7 @@ input:checked + .slider:before {
 
 .switchLabel {
   font-family: monospace;
-  color: lime;
+  color: #4CAF50;
   font-size: 18px;
 }
 
@@ -385,4 +385,14 @@ body.light div.help h2 {
 body.light div.help p {
   background-color: #eee;
   color: #000;
+}
+
+body.light .circle {
+  background-color: #ccc;
+  color: #000;
+}
+
+body.light .circle:hover {
+  background-color: #4CAF50;
+  color: #fff;
 }
