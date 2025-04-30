@@ -396,3 +396,11 @@ body.light .circle:hover {
   background-color: #4CAF50;
   color: #fff;
 }
+
+body.light .container {
+  background-color: #ccc;
+}
+
+body.light .bar1, body.light .bar2, body.light .bar3 {
+  background-color: #000;
+}

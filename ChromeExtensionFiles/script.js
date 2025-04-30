@@ -28,15 +28,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     feedbackButton.addEventListener("click", function () {
         document.getElementById("repstatus").innerText = "Sending..."
-        console.log("A user has submitted the following feedback: " + feedbackText.value);
-        sendFeedback(feedbackText.value)
-        feedbackText.value = "";
+        if(!feedbackText.value == "") {
+            console.log("A user has submitted the following feedback: " + feedbackText.value);
+            sendFeedback(feedbackText.value)
+        } else {
+            document.getElementById("repstatus").innerText = "Please enter feedback before submitting";
+        }
+        
     });
 
 });
 
 function sendFeedback(feedbackText) {
-
     // sends POST request to flask backend (server.py)
     fetch("http://127.0.0.1:5000/feedback", { //address of flask backend
         method: "POST",
@@ -48,6 +51,7 @@ function sendFeedback(feedbackText) {
             throw new Error("server status: " + response.status);
         } else {
             document.getElementById("repstatus").innerText = "Feedback submitted!";
+            document.getElementById("feedback").value = "";
         }
         return response.json();
     })
